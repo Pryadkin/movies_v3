@@ -13,12 +13,15 @@ const eslintConfig = [
     // Подключаем конфигурации Next.js
     ...compat.extends('next/core-web-vitals', 'next/typescript'),
 
+    // Подключаем Prettier
+    ...compat.extends('plugin:prettier/recommended'),
+
     // Дополнительные правила для TypeScript
     {
         files: ['**/*.ts', '**/*.tsx'],
         rules: {
-            '@typescript-eslint/no-unused-vars': 'warn', // Предупреждение при неиспользуемых переменных
-            '@typescript-eslint/no-explicit-any': 'warn', // Предупреждение при использовании `any`
+            '@typescript-eslint/no-unused-vars': 'warn',
+            '@typescript-eslint/no-explicit-any': 'warn',
         },
     },
 
@@ -26,18 +29,18 @@ const eslintConfig = [
     {
         files: ['**/*.jsx', '**/*.tsx'],
         rules: {
-            'react/jsx-uses-react': 'error', // Обнаружение использования React
-            'react/jsx-uses-vars': 'error', // Обнаружение неиспользуемых переменных в JSX
-            'react/react-in-jsx-scope': 'off', // Не требуется в React 17+
+            'react/jsx-uses-react': 'error',
+            'react/jsx-uses-vars': 'error',
+            'react/react-in-jsx-scope': 'off',
         },
     },
 
     // Общие правила для всех файлов
     {
         rules: {
-            'no-console': 'warn', // Предупреждение при использовании console.log
-            'no-unused-vars': 'warn', // Предупреждение при неиспользуемых переменных
-            'no-undef': 'error', // Ошибка при использовании необъявленных переменных
+            'no-console': 'warn',
+            'no-unused-vars': 'warn',
+            'no-undef': 'error',
         },
     },
 ]
