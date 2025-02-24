@@ -1,0 +1,52 @@
+{
+    "workbench.colorTheme": "Dracula Theme",
+    // "workbench.colorTheme": "Noctis Minimus",
+    // "workbench.colorTheme": "Eva Light",
+    "workbench.startupEditor": "none", // это уже было
+    // удаляет лишние пробелы
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    // убрать предупреждения при удалении и переносе файлов
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    // убрать emmet по табу
+    "emmet.triggerExpansionOnTab": false,
+    "emmet.showAbbreviationSuggestions": false,
+    // открытие новых файлов в той же вкладке, в которой находишься
+    "workbench.editor.enablePreview": true,
+    // расстояние между вложенностями веток
+    "workbench.tree.indent": 20,
+    // Установить длину пробелов, Таб будет считаться двойным пробелом
+    "editor.tabSize": 4,
+    // Если нужно установить отступы для разных языков
+    // "[css]": {
+    //   "editor.tabSize": 2
+    // },
+    // вставлять пробелы вместо табов
+    "editor.insertSpaces": true,
+    // Чтобы предложения Emmet всегда были первыми в списке предложений
+    "editor.snippetSuggestions": "top",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.all": "explicit"
+    },
+    // bounded объединяет два нижних параметра: ширина строки по ширине окна просмотра, максимальная ширина строки  - editor.wordWrapColumn
+    "editor.wordWrap": "bounded",
+    // "editor.wordWrapColumn": 100,
+    // удаление пробелов в фигурных скобках (замена { foo } на {foo})
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+
+    //prettier
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.configPath": ".prettierrc.json",
+    "prettier.requireConfig": true,
+    "editor.formatOnPaste": false, // required
+    "editor.formatOnType": false, // required
+    "editor.formatOnSave": true, // optional
+    "editor.formatOnSaveMode": "file", // required to format on save
+    "files.autoSave": "onFocusChange", // optional but recommended
+    "vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
+
+    "editor.detectIndentation": false,
+    "trailing-spaces.highlightCurrentLine": false
+}
