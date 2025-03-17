@@ -43,6 +43,11 @@ const eslintConfig = [
             'no-undef': 'error',
         },
     },
+    // Игнорирование файлов .yml
+    {
+        files: ['**/*.yml'],
+        excludedFiles: '**/*', // Исключаем все файлы .yml из проверки
+    },
 ]
 
 export default eslintConfig
