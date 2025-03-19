@@ -3,9 +3,15 @@ import React from 'react'
 
 import {IResponseSearchResult} from '@/features/search-movies/types'
 
+import {Button} from './button'
 import getFullPathForPosters from '@/shared/utils/getFullPathForPosters'
 
-const MovieCard = (movie: IResponseSearchResult) => {
+interface MovieProps {
+    movie: IResponseSearchResult
+    onAddMovie: (movie: IResponseSearchResult) => void
+}
+
+const MovieCard = ({movie, onAddMovie}: MovieProps) => {
     const movieWithCorrectPoster = getFullPathForPosters(movie)
 
     return (
@@ -19,13 +25,20 @@ const MovieCard = (movie: IResponseSearchResult) => {
             />
             <div className="p-4">
                 <h3 className="text-lg font-semibold">{movie.title}</h3>
+                <Button onClick={() => onAddMovie(movie)}>add</Button>
                 {/* <p className="text-sm text-gray-600">{movie.}</p> */}
             </div>
         </div>
     )
 }
 
-const MovieCardList = ({movies}: {movies: IResponseSearchResult[]}) => (
+const MovieCardList = ({
+    movies,
+    onAddMovie,
+}: {
+    movies: IResponseSearchResult[]
+    onAddMovie: (movie: IResponseSearchResult) => void
+}) => (
     <div className="container mx-auto px-4">
         <h1 className="my-4 text-2xl font-bold">All Movies</h1>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -33,7 +46,8 @@ const MovieCardList = ({movies}: {movies: IResponseSearchResult[]}) => (
                 return movie.poster_path ? (
                     <MovieCard
                         key={movie.id}
-                        {...movie}
+                        onAddMovie={onAddMovie}
+                        movie={movie}
                     />
                 ) : null
             })}

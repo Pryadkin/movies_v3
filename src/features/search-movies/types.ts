@@ -9,6 +9,7 @@ export interface IResponseSearchResult {
     adult: boolean
     backdrop_path: string | null
     genre_ids: Array<number>
+    description: string
     id: number
     original_language: string
     overview: string

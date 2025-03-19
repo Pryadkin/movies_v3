@@ -19,14 +19,14 @@ model User {
 }
 
 model Movie {
-    id          String      @id @default(cuid())
-    title       String
-    description String
-    releaseDate DateTime
-    createdAt   DateTime    @default(now())
-    updatedAt   DateTime    @updatedAt
-    users       User[]      // Связь многие-ко-многим с пользователями
-    tags        Tag[]      // Связь многие-ко-многим с пользователями
+    id                 String      @id @default(cuid())
+    title              String
+    description        String
+    createdAt          DateTime    @default(now())
+    updatedAt          DateTime    @updatedAt
+    users              User[]      // Связь многие-ко-многим с пользователями
+    tags               Tag[]       // Связь многие-ко-многим с тегами
+    posterPath        String?
 }
 
 model Tag {

@@ -5,14 +5,7 @@ import {DeleteMovieCommand} from './model/types'
 import {dbClient} from '@/shared/lib/db'
 
 class MoviesRepository {
-    getMoviesList = cache(
-        (): Promise<Movie[]> =>
-            dbClient.movie.findMany({
-                include: {
-                    tags: true,
-                },
-            }),
-    )
+    getMoviesList = cache((): Promise<Movie[]> => dbClient.movie.findMany())
     addMovie = (movie: Movie): Promise<Movie> => {
         return dbClient.movie.create({
             data: movie,
