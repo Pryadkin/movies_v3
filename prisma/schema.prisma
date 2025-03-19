@@ -1,11 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
     provider = "prisma-client-js"
+    previewFeatures = ["prismaSchemaFolder"]
 }
 
 datasource db {
@@ -14,38 +9,31 @@ datasource db {
 }
 
 model User {
-    id        String    @id  @default(cuid())
-    email     String    @unique
-    password  String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    movieList MovieList[]
+    id          String      @id @default(cuid())
+    email       String      @unique
+    password    String
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime    @updatedAt
+    movies      Movie[]     // Связь многие-ко-многим с фильмами
+    tags        Tag[]       // Связь многие-ко-многим с тегами
 }
 
 model Movie {
-    id          String    @id  @default(cuid())
+    id          String      @id @default(cuid())
     title       String
     description String
     releaseDate DateTime
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    tags        Tag[]
-    movieList   MovieList[]
-}
-
-model MovieList {
-    id        String    @id  @default(cuid())
-    userId    String
-    movieId   String
-    createdAt DateTime @default(now())
-    user      User     @relation(fields: [userId], references: [id])
-    movie     Movie    @relation(fields: [movieId], references: [id])
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime    @updatedAt
+    users       User[]      // Связь многие-ко-многим с пользователями
+    tags        Tag[]      // Связь многие-ко-многим с пользователями
 }
 
 model Tag {
-    id        String    @id  @default(cuid())
-    name      String   @unique
+    id        String    @id @default(cuid())
+    name      String
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    user      User[]
     movies    Movie[]
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
 }

@@ -1,0 +1,10 @@
+// movie.prisma
+// model Movie {
+//     id          String    @id  @default(cuid())
+//     title       String
+//     description String
+//     releaseDate DateTime
+//     createdAt   DateTime @default(now())
+//     updatedAt   DateTime @updatedAt
+//     tags        Tag[]
+// }

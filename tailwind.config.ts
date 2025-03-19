@@ -16,7 +16,8 @@ export default {
                 mono: ['Fira Code', 'Menlo', 'monospace'], // Моноширинный шрифт
             },
             colors: {
-                background: 'hsl(var(--background))',
+                background: 'hsl(var(--bg-primary))',
+                textColorPrimery: 'var(--text-color-primary)',
                 foreground: 'hsl(var(--foreground))',
                 card: {
                     DEFAULT: 'hsl(var(--card))',
@@ -49,13 +50,6 @@ export default {
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
                 ring: 'hsl(var(--ring))',
-                chart: {
-                    '1': 'hsl(var(--chart-1))',
-                    '2': 'hsl(var(--chart-2))',
-                    '3': 'hsl(var(--chart-3))',
-                    '4': 'hsl(var(--chart-4))',
-                    '5': 'hsl(var(--chart-5))',
-                },
             },
             borderRadius: {
                 lg: 'var(--radius)',

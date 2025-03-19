@@ -4,6 +4,7 @@ import {ReactNode} from 'react'
 
 import './globals.css'
 import {cn} from '@/shared/utils'
+import {Header} from '@/widgets/header/Header'
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -34,6 +35,7 @@ export default function RootLayout({
                     geistMono.variable,
                 )}
             >
+                <Header />
                 {children}
             </body>
         </html>
