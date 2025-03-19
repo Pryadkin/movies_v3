@@ -1,3 +1,9 @@
+import {SearchMovies} from '@/features/search-movies/ui'
+
 export default async function searchMovies() {
-    return <div>search-movies</div>
+    return (
+        <div>
+            <SearchMovies />
+        </div>
+    )
 }
