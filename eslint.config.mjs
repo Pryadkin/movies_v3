@@ -35,6 +35,19 @@ const eslintConfig = [
         },
     },
 
+    // Правила для тестов Jest
+    {
+        files: ['**/*.test.ts', '**/*.test.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
+        env: {
+            jest: true, // Включаем глобальные переменные Jest (describe, it, expect и т.д.)
+        },
+        rules: {
+            'no-console': 'off', // Отключаем правило для тестов, чтобы можно было использовать console.log
+            '@typescript-eslint/no-unused-vars': 'off', // Отключаем для тестов, так как переменные могут быть объявлены, но не использованы
+            '@typescript-eslint/no-explicit-any': 'off', // Отключаем для тестов, чтобы можно было использовать `any`
+        },
+    },
+
     // Общие правила для всех файлов
     {
         rules: {
@@ -47,7 +60,7 @@ const eslintConfig = [
     {
         files: ['**/*.yml'],
         excludedFiles: '**/*', // Исключаем все файлы .yml из проверки
-    },
+    }
 ]
 
 export default eslintConfig
