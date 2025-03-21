@@ -7,5 +7,9 @@ export function movieItem({
     movie: Movie
     onDelete: (movieId: string) => Promise<void>
 }) {
-    return <div>hello</div>
+    return (
+        <div>
+            hello wor<div>world</div>
+        </div>
+    )
 }
