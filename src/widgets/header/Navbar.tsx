@@ -55,15 +55,12 @@ const components: {title: string; href: string; description: string}[] = [
 
 export function Navbar() {
     const pathname = usePathname()
-    const btnName = pathname.split('/')[1].toUpperCase()
 
     return (
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger className="">
-                        {btnName || 'Options'}
-                    </NavigationMenuTrigger>
+                    <NavigationMenuTrigger>Options</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                             <ListItem

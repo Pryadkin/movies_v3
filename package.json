@@ -8,7 +8,10 @@
         "start": "next start",
         "lint": "next lint",
         "prettier": "prettier -w .",
-        "test": "jest"
+        "test": "jest",
+        "testp": "npx playwright test",
+        "testp:headed": "npx playwright test --headed",
+        "testp:report": "npx playwright test --reporter=html"
     },
     "dependencies": {
         "@prisma/client": "6.4.1",
@@ -24,6 +27,7 @@
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",
+        "@playwright/test": "^1.51.1",
         "@testing-library/dom": "^10.4.0",
         "@testing-library/jest-dom": "^6.6.3",
         "@testing-library/react": "^16.2.0",
@@ -33,6 +37,7 @@
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
+        "dotenv": "^16.4.7",
         "eslint": "^9",
         "eslint-config-next": "15.1.7",
         "eslint-config-prettier": "^10.0.1",
