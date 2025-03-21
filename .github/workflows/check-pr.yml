@@ -16,4 +16,3 @@ jobs:
             - run: yarn lint
             - run: yarn lint:types
             - run: yarn test
-            - run: yarn testp
