@@ -37,4 +37,4 @@ jobs:
                   user: ${{ secrets.STAGING_SSH_USERNAME }} # Имя пользователя для SSH
                   private_key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }} # Приватный ключ для SSH
                   host_fingerprint: ${{ secrets.STAGING_SSH_FINGERPRINT }} # Отпечаток хоста для безопасности
-                  command: source ~/.nvm/nvm.sh; echo 'hello world' # Команда для деплоя
+                  command: source ~/.nvm/nvm.sh; ~/deploy.sh # Команда для деплоя
