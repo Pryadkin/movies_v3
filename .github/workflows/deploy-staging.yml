@@ -10,26 +10,15 @@ jobs:
         runs-on: ubuntu-latest # Запуск на последней версии Ubuntu
 
         steps:
-            # Шаг 1: Клонирование репозитория
             - uses: actions/checkout@v4
-
-            # Шаг 2: Установка Node.js
             - uses: actions/setup-node@v3
               with:
-                  node-version: '20.x.x' # Используем Node.js версии 20
-                  cache: 'npm' # Включаем кэширование для ускорения установки зависимостей
-
-            # Шаг 3: Установка зависимостей
-            - run: npm ci # Устанавливаем зависимости с использованием package-lock.json
-
-            # Шаг 4: Запуск линтера
-            - run: npm run lint # Проверяем стиль кода
-
-            # Шаг 5: Проверка типов
-            - run: npm run lint:types # Проверяем типы (например, с использованием TypeScript)
-
-            # Шаг 6: Запуск тестов
-            - run: npm run test # Запускаем тесты
+                  node-version: 20.x.x
+                  cache: yarn
+            - run: yarn install --frozen-lockfile
+            - run: yarn lint
+            - run: yarn lint:types
+            - run: yarn test
 
     deploy:
         needs: lint # Зависит от успешного выполнения задачи lint
