@@ -1,0 +1,51 @@
+name: deploy staging
+
+on:
+    push:
+        branches:
+            - main # Workflow запускается только при пуше в ветку main
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest # Запуск на последней версии Ubuntu
+
+        steps:
+            # Шаг 1: Клонирование репозитория
+            - uses: actions/checkout@v4
+
+            # Шаг 2: Установка Node.js
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: '20.x.x' # Используем Node.js версии 20
+                  cache: 'npm' # Включаем кэширование для ускорения установки зависимостей
+
+            # Шаг 3: Установка зависимостей
+            - run: npm ci # Устанавливаем зависимости с использованием package-lock.json
+
+            # Шаг 4: Запуск линтера
+            - run: npm run lint # Проверяем стиль кода
+
+            # Шаг 5: Проверка типов
+            - run: npm run lint:types # Проверяем типы (например, с использованием TypeScript)
+
+            # Шаг 6: Запуск тестов
+            - run: npm run test # Запускаем тесты
+
+    deploy:
+        needs: lint # Зависит от успешного выполнения задачи lint
+        runs-on: ubuntu-latest # Запуск на последней версии Ubuntu
+
+        concurrency:
+            group: staging # Группа для управления параллельными запусками
+            cancel-in-progress: true # Отменяет текущий запуск, если начинается новый
+
+        steps:
+            # Шаг 7: Выполнение SSH-команды для деплоя
+            - name: SSH Command
+              uses: D3rHase/ssh-command-action@v0.2.2 # Используем действие для выполнения SSH-команд
+              with:
+                  host: ${{ secrets.STAGING_SSH_HOST }} # Хост или IP сервера
+                  user: ${{ secrets.STAGING_SSH_USERNAME }} # Имя пользователя для SSH
+                  private_key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }} # Приватный ключ для SSH
+                  host_fingerprint: ${{ secrets.STAGING_SSH_FINGERPRINT }} # Отпечаток хоста для безопасности
+                  command: source ~/.nvm/nvm.sh; echo 'hello world' # Команда для деплоя
