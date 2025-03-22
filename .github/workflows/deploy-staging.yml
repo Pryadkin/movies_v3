@@ -59,7 +59,8 @@ jobs:
               env:
                   TEST_ENV_BASE_URL: https://e-cinebox.ru/
 
-            - uses: actions/upload-artifact@v3
+            - name: Upload artifact
+            - uses: actions/upload-artifact@v4
               if: always()
               with:
                   name: playwright-report
